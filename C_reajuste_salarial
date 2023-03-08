@@ -1,0 +1,65 @@
+#include <stdio.h>
+int main(){
+
+	int idade, ano_contratacao, ano_atual, matricula, fx, sexo;
+	float salario_base, salario_final;
+	
+	printf("Entre com a Idade do Funcionario: ");
+	scanf("%d", &idade);
+	printf("Entre com o sexo do Funcionario(0-masc, 1-fem): ");
+	scanf("%d", &sexo);
+	printf("Entre com salario base do Funcionario: ");
+	scanf("%f", &salario_base);
+	printf("Entre com o ano de contracacao  do Funcionario: ");
+	scanf("%d", &ano_contratacao);
+	printf("Entre com o ano atual do Funcionario: ");
+	scanf("%d", &ano_atual);
+	printf("Entre com a Matricula do Funcionario: ");
+	scanf("%d", &matricula);
+	
+	salario_final = salario_base;
+	
+	if 		(idade>=18&&idade<=39) fx = 1;
+	else if (idade>=40&&idade<=69) fx = 2;
+	else if (idade>=70&&idade<=99) fx = 3;
+	
+	switch(fx){
+		
+		case 1: switch(sexo){
+			case 0:salario_final+=salario_base*0.1;
+			if ((ano_atual-ano_contratacao)<=10) salario_final-=10;
+			else salario_final+=17;
+				break;
+			case 1: salario_final+= salario_base*0.08;
+			if ((ano_atual-ano_contratacao)<=10) salario_final-=11;
+			else salario_final+=16;
+			}
+			break;
+		case 2: switch(sexo){
+			case 0:salario_final+=salario_base*0.08;
+			if ((ano_atual-ano_contratacao)<=10) salario_final-=5;
+			else salario_final+=15;	
+				break;
+			case 1: salario_final+= salario_base*0.1;
+			if ((ano_atual-ano_contratacao)<=10) salario_final-=7;
+			else salario_final+=14;
+				break;
+			}
+			break;
+		case 3: switch(sexo){
+			case 0:salario_final+=salario_base*0.15;
+			if ((ano_atual-ano_contratacao)<=10) salario_final-=15;
+			else salario_final+=13;	
+				break;
+			case 1: salario_final+= salario_base*0.17;
+			if ((ano_atual-ano_contratacao)<=10) salario_final-=17;
+			else salario_final+=12;
+				break;
+			}
+			break;
+		//testes
+		default: printf("Default executado switch tx\n\n");
+	}
+	printf("Salario Final: %.2f", salario_final);
+
+}
